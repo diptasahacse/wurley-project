@@ -37,8 +37,10 @@ export class UserCollectionModel {
   }
 
   getFilteredData(name: string, sortBy: "name" | "role" | undefined) {
-    const filteredByName = this.data.filter((user) =>
-      user.getName().toLowerCase().includes(name.toLowerCase())
+    const filteredByName = this.data.filter(
+      (user) =>
+        user.getName().toLowerCase().includes(name.toLowerCase()) &&
+        user.getName().toLowerCase().startsWith(name.toLowerCase())
     );
     if (sortBy === "name") {
       const sortedData = filteredByName.sort((a, b) => {
